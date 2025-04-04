@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Insurance Premium Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <h1>Crop Insurance Calculator</h1>
+            </div>
+            <p>Calculate your PMFBY insurance premium based on your crop and region</p>
+        </header>
+
+        <main>
+            <div class="calculator-wrapper">
+                <div class="progress-bar">
+                    <div class="step active">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Location</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-leaf"></i>
+                        <span>Crop</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-calculator"></i>
+                        <span>Details</span>
+                    </div>
+                </div>
+
+                <div class="calculator-container">
+                    <form id="calculatorForm">
+                        <div class="form-section" id="locationSection">
+                            <h2><i class="fas fa-map-marker-alt"></i> Select Your Location</h2>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <select id="state" required>
+                                    <option value="">Select Your State</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <select id="district" required>
+                                    <option value="">First Select State</option>
+                                </select>
+                            </div>
+                            <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+
+                        <div class="form-section hidden" id="cropSection">
+                            <h2><i class="fas fa-leaf"></i> Crop Information</h2>
+                            <div class="form-group">
+                                <label for="season">Growing Season</label>
+                                <select id="season" required>
+                                    <option value="">Select Season</option>
+                                    <option value="kharif">Kharif (July-October)</option>
+                                    <option value="rabi">Rabi (October-March)</option>
+                                    <option value="summer">Summer (March-June)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cropType">Crop Type</label>
+                                <select id="cropType" required>
+                                    <option value="">First Select Season</option>
+                                </select>
+                            </div>
+                            <div class="button-group">
+                                <button type="button" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-section hidden" id="detailsSection">
+                            <h2><i class="fas fa-calculator"></i> Insurance Details</h2>
+                            <div class="form-group">
+                                <label for="area">Area (in hectares)</label>
+                                <input type="number" id="area" min="0.1" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sumInsured">Sum Insured (per hectare)</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <input type="number" id="sumInsured" min="1000" step="100" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="riskZone">Risk Zone</label>
+                                <select id="riskZone" required>
+                                    <option value="">Select Risk Zone</option>
+                                    <option value="low">Low Risk Zone</option>
+                                    <option value="medium">Medium Risk Zone</option>
+                                    <option value="high">High Risk Zone</option>
+                                </select>
+                            </div>
+                            <div class="button-group">
+                                <button type="button" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="submit" class="calculate-btn"><i class="fas fa-calculator"></i> Calculate Premium</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="result-section hidden" id="resultSection">
+                        <h2><i class="fas fa-chart-pie"></i> Premium Calculation Result</h2>
+                        <div class="result-card">
+                            <div class="result-item total">
+                                <span>Total Sum Insured</span>
+                                <span id="totalSumInsured">₹0.00</span>
+                            </div>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <i class="fas fa-percent"></i>
+                                    <span>Premium Rate</span>
+                                    <span id="premiumRate">0%</span>
+                                </div>
+                                <div class="result-item">
+                                    <i class="fas fa-coins"></i>
+                                    <span>Premium Amount</span>
+                                    <span id="premiumAmount">₹0.00</span>
+                                </div>
+                                <div class="result-item">
+                                    <i class="fas fa-user-alt"></i>
+                                    <span>Farmer's Share</span>
+                                    <span id="farmerShare">₹0.00</span>
+                                </div>
+                                <div class="result-item">
+                                    <i class="fas fa-landmark"></i>
+                                    <span>Government Share</span>
+                                    <span id="governmentShare">₹0.00</span>
+                                </div>
+                            </div>
+                            <button type="button" class="recalculate-btn"><i class="fas fa-redo"></i> Calculate Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><i class="fas fa-info-circle"></i> This calculator provides estimated premiums. Actual values may vary based on current government policies.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
